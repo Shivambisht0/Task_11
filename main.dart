@@ -1,6 +1,11 @@
-import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:imagetext/docker.dart';
+import 'package:imagetext11111/cards.dart';
+import 'package:imagetext11111/docker.dart';
+import 'package:imagetext11111/dockercommands.dart';
+import 'package:imagetext11111/services.dart';
+import 'package:imagetext11111/teammembers.dart';
+import 'package:imagetext11111/welcome.dart';
 
 main() {
   runApp(MaterialApp(
@@ -23,7 +28,7 @@ class _iTState extends State<iT> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MyDocker(),
+          builder: (context) => MyServices(),
         ),
       );
     }
@@ -32,6 +37,8 @@ class _iTState extends State<iT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
+      appBar: AppBar(title: Text("Task_11 Flutter App + Docker")),
       body: Container(
         child: Column(
           children: [
@@ -50,7 +57,7 @@ class _iTState extends State<iT> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 120,
+                            height: 150,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -69,7 +76,7 @@ class _iTState extends State<iT> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 60,
                           ),
                           CircleAvatar(
                             radius: 40,
@@ -106,10 +113,10 @@ class _iTState extends State<iT> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 40,
                           ),
                           Container(
-                            child: TextButton(
+                            child: ElevatedButton(
                               onPressed: lw,
                               child: Text(
                                 "SERVICE",
@@ -131,6 +138,73 @@ class _iTState extends State<iT> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NavDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text(
+              'Task_11',
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: NetworkImage(
+                    "https://images.unsplash.com/photo-1497124401559-3e75ec2ed794?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmF0bWFufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.input),
+            title: Text('Welcome'),
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) => MyWelcome(),
+                  isScrollControlled: true);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.design_services),
+            title: Text('Services'),
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) => Services(),
+                  isScrollControlled: true);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.border_color),
+            title: Text('Team Members'),
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) => teammembers(),
+                  isScrollControlled: true);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.info),
+            title: Text('Docker Commands'),
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) => DockerCommands(),
+                  isScrollControlled: true);
+            },
+          ),
+        ],
       ),
     );
   }
