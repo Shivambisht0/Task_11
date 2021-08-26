@@ -79,7 +79,7 @@ class _MyAppState extends State<MyDocker> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 10, right: 10, left: 10),
+        padding: EdgeInsets.only(top: 10, right: 10, left: 10, bottom: 10),
         child: Column(
           children: [
             Container(
@@ -186,6 +186,7 @@ class _MyAppState extends State<MyDocker> {
                               Radius.circular(100.0),
                             ),
                           ),
+                          fillColor: Colors.blue.shade100,
                           prefixIcon: Icon(Icons.keyboard),
                           hintText: "Enter docker name",
                         ),
@@ -239,14 +240,16 @@ class _MyAppState extends State<MyDocker> {
                     SizedBox(height: 40),
                     CircleAvatar(
                       child: Link(
-                          target: LinkTarget.blank,
-                          uri: Uri.parse(
-                              "https://www.linkedin.com/in/shivam-bist/"),
-                          builder: (context, followLink) {
-                            return ElevatedButton(
-                                onPressed: followLink,
-                                child: Text("Shivam's Linkedin "));
-                          }),
+                        target: LinkTarget.blank,
+                        uri: Uri.parse(
+                            "https://www.linkedin.com/in/shivam-bist/"),
+                        builder: (context, followLink) {
+                          return ElevatedButton(
+                            onPressed: followLink,
+                            child: Text("Shivam's Linkedin "),
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -255,6 +258,8 @@ class _MyAppState extends State<MyDocker> {
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
                     topRight: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
                   ),
                 ),
               ),
