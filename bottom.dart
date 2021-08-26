@@ -16,9 +16,9 @@ class MyB extends StatelessWidget {
         "Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications.",
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 25,
+          fontSize: 18,
           color: Colors.black,
-          fontStyle: FontStyle.italic,
+          fontStyle: FontStyle.normal,
         ),
       ),
     );
